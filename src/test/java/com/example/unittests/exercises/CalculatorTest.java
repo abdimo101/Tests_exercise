@@ -22,6 +22,20 @@ class CalculatorTest {
     }
 
     @Test
+    void sumMethod_ZeroInputs(){
+        //Arrange
+        Calculator calculator = new Calculator();
+        int number1 = 0;
+        int number2 = 0;
+
+        //Act
+        int res = calculator.sumMethod(number1, number2);
+
+        //Assert
+        assertEquals(0, res);
+    }
+
+    @Test
     void subtractMethodAAA() {
         //Arrange
         Calculator calculator = new Calculator();
@@ -33,6 +47,20 @@ class CalculatorTest {
 
         //Assert
         assertEquals(6, res);
+    }
+
+    @Test
+    void subtractMethod_ZeroInputs() {
+        //Arrange
+        Calculator calculator = new Calculator();
+        int number1 = 0;
+        int number2 = 0;
+
+        //Act
+        int res = calculator.subtractMethod(number1, number2);
+
+        //Assert
+        assertEquals(0, res);
     }
 
     @Test
@@ -50,6 +78,20 @@ class CalculatorTest {
     }
 
     @Test
+    void multiplyMethod_ZeroInputs() {
+        //Arrange
+        Calculator calculator = new Calculator();
+        int number1 = 0;
+        int number2 = 5;
+
+        //Act
+        int res = calculator.multiplyMethod(number1, number2);
+
+        //Assert
+        assertEquals(0, res);
+    }
+
+    @Test
     void divideMethodAAA() {
         //Arrange
         Calculator calculator = new Calculator();
@@ -61,6 +103,19 @@ class CalculatorTest {
 
         //Assert
         assertEquals(5, res);
+    }
+
+    @Test
+    void divideMethod_ZeroInputs() {
+        //Arrange
+        Calculator calculator = new Calculator();
+        int number1 = 10;
+        int number2 = 0;
+
+        //Act & Assert
+        assertThrows(ArithmeticException.class, () -> {
+            calculator.divideMethod(number1, number2);
+        });
     }
 
 

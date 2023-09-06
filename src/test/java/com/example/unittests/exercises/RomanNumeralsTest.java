@@ -41,7 +41,6 @@ class RomanNumeralsTest {
     @ParameterizedTest
     @MethodSource("romanToDecimalTest")
     public void testRomanToDecimal(String roman, int expected) {
-        RomanNumerals romanNumerals = new RomanNumerals();
         int result = romanNumerals.romanToDecimal(roman);
         assertEquals(expected, result);
     }
@@ -52,6 +51,23 @@ class RomanNumeralsTest {
                 new Object[]{"IX", 9},
                 new Object[]{"XIII", 13},
                 new Object[]{"XXI", 21}
+        );
+    }
+
+    @ParameterizedTest
+    @MethodSource("romanToDecimalNegativeTest")
+    public void testRomanToDecimalNegative(String roman, int expected) {
+        RomanNumerals romanNumerals = new RomanNumerals();
+        int result = romanNumerals.romanToDecimal(roman);
+        assertNotEquals(expected, result);
+    }
+
+    private static Stream<Object[]> romanToDecimalNegativeTest() {
+        return Stream.of(
+                new Object[]{"IV", 15},
+                new Object[]{"IX", 110},
+                new Object[]{"XXI", -21},
+                new Object[]{"XII", 15}
         );
     }
 
