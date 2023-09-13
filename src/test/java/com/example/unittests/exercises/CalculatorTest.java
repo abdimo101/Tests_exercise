@@ -1,11 +1,32 @@
 package com.example.unittests.exercises;
 
+import org.junit.Assert;
 import org.junit.jupiter.api.Test;
+import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.invocation.InvocationOnMock;
+import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThat;
-
+import static org.mockito.Mockito.*;
+@RunWith(MockitoJUnitRunner.class)
 class CalculatorTest {
+
+    @Test
+    void convertIntToDoubleTest() {
+      Calculator calculator = new Calculator();
+
+      double res = calculator.convertIntToDouble(10);
+
+        assertEquals(10.0, res);
+        System.out.println(res);
+    }
+
+
 
     @Test
     void sumMethodAAA() {
@@ -16,6 +37,23 @@ class CalculatorTest {
 
         //Act
         int res = calculator.sumMethod(number1, number2);
+
+        //Assert
+        assertEquals(8, res);
+    }
+
+    @Test
+    void sumMethodAAAMock() {
+        //Arrange
+        Calculator calculatorMock = Mockito.mock(Calculator.class);
+
+        int number1 = 5;
+        int number2 = 3;
+
+        Mockito.when(calculatorMock.sumMethod(number1, number2)).thenReturn(8);
+
+        //Act
+        int res = calculatorMock.sumMethod(number1, number2);
 
         //Assert
         assertEquals(8, res);

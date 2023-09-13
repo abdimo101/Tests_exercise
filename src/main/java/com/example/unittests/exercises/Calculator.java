@@ -1,5 +1,7 @@
 package com.example.unittests.exercises;
 
+import org.springframework.cglib.core.Converter;
+
 public class Calculator {
 
     public int sumMethod(int number1, int number2){
@@ -20,5 +22,11 @@ public class Calculator {
     public int divideMethod(int number1, int number2){
         int divide = number1 / number2;
         return divide;
+    }
+
+    public double convertIntToDouble(int number){
+        double res;
+        res = number;
+        return res;
     }
 }
