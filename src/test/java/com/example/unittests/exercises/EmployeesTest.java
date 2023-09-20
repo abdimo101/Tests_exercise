@@ -1,6 +1,7 @@
 package com.example.unittests.exercises;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
@@ -32,14 +33,14 @@ class EmployeesTest {
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"Lars", "Louise", "A-B C-D E-F G-H I-J K-L M-N O "})
+    @ValueSource(strings = {"A", "AB", "Lars", "LOUISE", "A-B C-D E-F G-H I-J K-L M-N O ", "-", " "})
     void validFirstNames(String firstName) {
         employee.setFirst_name(firstName);
         assertEquals(firstName, employee.getFirst_name());
     }
 
     @ParameterizedTest
-    @ValueSource(strings = {"", "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A"})
+    @ValueSource(strings = {"", "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z A", "õã", "aa123", "aa/"})
     void invalidFirstNames(String firstName) {
         assertThrows(IllegalArgumentException.class, () -> employee.setFirst_name(firstName));
     }
@@ -57,6 +58,12 @@ class EmployeesTest {
     @ValueSource(strings = {"13/09/2023", "15/05/2010"})
     void invalidDateOfBirth(String dob) throws ParseException {
         assertThrows(IllegalArgumentException.class, () -> employee.setDate_of_birth(dob));
+    }
+
+    @Test
+    void getSalaryTest(){
+        double res = employee.getSalary();
+        assertEquals(52440, res);
     }
 
 }
