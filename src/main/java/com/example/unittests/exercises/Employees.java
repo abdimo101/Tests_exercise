@@ -37,10 +37,7 @@ public class Employees {
        return this.base_salary + (this.educational_level * 1220);
     }
 
-    public float getDiscount(){
-        Date date = new Date();
 
-    }
 
     public String getCpr() {
         return cpr;
